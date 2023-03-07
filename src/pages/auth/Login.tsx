@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../../components/Button';
 import CardBox from '../../components/CardBox';
@@ -11,14 +11,13 @@ const Login = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div style={{ backgroundColor: "" }}>
       {/* <SelectLanguage/> */}
       {/* <SelectTheme/> */}
-      <Form
-        onSubmit={() => { console.info("hi")}}
-        formType="login"
-      />
       <CardBox children="hi" heading='yo'/>
       <Button onClick={() => { console.info("hi")}}> Hi </Button>
       <div style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, {  } from "react";
 
 type ButtonProps = {
   children?: React.ReactNode;
@@ -11,7 +11,7 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-const Button: FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   id = "",
   type = "button",
