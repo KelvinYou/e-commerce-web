@@ -47,10 +47,12 @@ export const ThemeContext = createContext<ThemeContextType>({
 });
 
 export const ThemeProvider: React.FC<MyComponentProps> = ({ children }) => {
-  // const [theme, setTheme] = useState<Theme>(lightTheme);
+  const [theme, setTheme] = useState<Theme>(lightTheme);
   
   // Retrieve the theme from local storage or use the default light theme
-  const [theme, setTheme] = useState<Theme>(JSON.parse(localStorage.getItem('theme') || 'null') || lightTheme);
+  // const storedTheme = localStorage.getItem('theme');
+  // const initialTheme = storedTheme ? JSON.parse(storedTheme) : lightTheme;
+  // const [theme, setTheme] = useState<Theme>(initialTheme);
 
   // Set the selected theme in local storage
   useEffect(() => {

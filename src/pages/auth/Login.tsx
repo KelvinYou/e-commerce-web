@@ -6,12 +6,13 @@ import { ThemeContext } from './../../theme/ThemeContext';
 const Login = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
+
   return (
     <div>
       {/* <SelectLanguage/> */}
-      {/* <SelectTheme/> */}
+      <SelectTheme/>
       
-      <div  style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>
+      <div style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>
       <div>{t("Email")}</div>
       <div>{t("Password")}</div>
       <div>{t("Login now")}</div>

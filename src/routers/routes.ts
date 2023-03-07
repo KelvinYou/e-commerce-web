@@ -1,3 +1,5 @@
+import * as ROUTES from "./../constants/routes";
+
 import Home from "../pages/Home";
 import Login from "../pages/auth/Login";
 
@@ -10,13 +12,13 @@ interface RouteType {
 
 const routes: RouteType[] = [
   {
-    path: "",
+    path: ROUTES.HOME,
     component: Home,
     name: "Home Screen",
     protected: false,
   },
   {
-    path: "/login",
+    path: ROUTES.LOGIN,
     component: Login,
     name: "Login Screen",
     protected: false,
