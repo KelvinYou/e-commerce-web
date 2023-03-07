@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../../components/Button';
 import CardBox from '../../components/CardBox';
-import Form from '../../components/form';
-import SelectLanguage from '../../components/i18n/SelectLanguage';
-import SelectTheme from '../../components/SelectTheme';
+import Form from '../../components/Form';
+// import SelectLanguage from '../../components/i18n/SelectLanguage';
+// import SelectTheme from '../../components/SelectTheme';
 import { ThemeContext } from './../../theme/ThemeContext';
+
 const Login = () => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
