@@ -14,3 +14,9 @@ export const displayDate = (timestamp: any) => {
   // return day + ' ' + monthNames[monthIndex] + ' ' + year;
   return `${monthNames[monthIndex]} ${day}, ${year}`;
 };
+
+export const capitalize = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
+export const getRandomNumber = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;

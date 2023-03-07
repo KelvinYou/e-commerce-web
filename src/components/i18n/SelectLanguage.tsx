@@ -21,7 +21,7 @@ i18n
     },
   });
 
-const LocaleDropDown = () => {
+const SelectLanguage = () => {
   const { i18n } = useTranslation();
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(event.target.value);
@@ -53,4 +53,4 @@ const LocaleDropDown = () => {
   )
 }
 
-export default LocaleDropDown
+export default SelectLanguage

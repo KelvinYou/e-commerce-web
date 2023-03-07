@@ -1,13 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-// import LocaleDropDown from '../../components/i18n/LocaleDropDown';
+import SelectLanguage from '../../components/i18n/SelectLanguage';
 
 const Login = () => {
   const { t } = useTranslation();
 
   return (
     <div>
-      {/* <LocaleDropDown/> */}
+      <SelectLanguage/>
       <div>{t("Login to your account")}</div>
       <div>{t("Email")}</div>
       <div>{t("Password")}</div>
