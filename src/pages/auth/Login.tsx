@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import SelectLanguage from '../../components/i18n/SelectLanguage';
-
+import SelectTheme from '../../components/SelectTheme';
+import { ThemeContext } from './../../theme/ThemeContext';
 const Login = () => {
   const { t } = useTranslation();
-
+  const { theme } = useContext(ThemeContext);
   return (
     <div>
-      <SelectLanguage/>
-      <div>{t("Login to your account")}</div>
+      {/* <SelectLanguage/> */}
+      {/* <SelectTheme/> */}
+      
+      <div  style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>
       <div>{t("Email")}</div>
       <div>{t("Password")}</div>
       <div>{t("Login now")}</div>
