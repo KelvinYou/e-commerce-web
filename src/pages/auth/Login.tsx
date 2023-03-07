@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from '../../components/Button';
+import CardBox from '../../components/CardBox';
+import Form from '../../components/form';
 import SelectLanguage from '../../components/i18n/SelectLanguage';
 import SelectTheme from '../../components/SelectTheme';
 import { ThemeContext } from './../../theme/ThemeContext';
@@ -8,10 +11,15 @@ const Login = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "" }}>
       {/* <SelectLanguage/> */}
-      <SelectTheme/>
-      
+      {/* <SelectTheme/> */}
+      <Form
+        onSubmit={() => { console.info("hi")}}
+        formType="login"
+      />
+      <CardBox children="hi" heading='yo'/>
+      <Button onClick={() => { console.info("hi")}}> Hi </Button>
       <div style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>
       <div>{t("Email")}</div>
       <div>{t("Password")}</div>
