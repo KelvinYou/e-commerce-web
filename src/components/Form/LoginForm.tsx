@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
+import { appTheme } from '../../theme';
 import { ThemeContext } from './../../theme/ThemeContext';
 
 interface LoginFormProps {
@@ -8,7 +9,8 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext); // move inside component
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,18 +21,51 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       setError('Please enter a username and password');
       return;
     }
+    
     onSubmit(email, password);
   };
 
+  const styles = {
+    form: {
+      display: 'flex',
+      flexDirection: 'column' as const,
+      alignItems: 'center',
+      backgroundColor: theme.backgroundColor,
+      padding: appTheme.spacing.lg,
+    },
+    title: {
+      
+    },
+    label: {
+      color: theme.onBackgroundColor,
+      marginBottom: appTheme.spacing.md,
+    },
+    input: {
+      padding: appTheme.spacing.sm,
+      marginBottom: appTheme.spacing.md,
+    },
+    button: {
+      backgroundColor: theme.primaryColor,
+      color: theme.backgroundColor,
+      padding: appTheme.spacing.md,
+      borderRadius: appTheme.spacing.sm,
+      border: 'none',
+      cursor: 'pointer',
+    },
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div style={{ color: theme.onBackgroundColor }}>{t("Login to your account")}</div>
+    <form style={styles.form} onSubmit={handleSubmit}>
+      <div style={styles.label}>
+        {t("Login to your account")}
+        </div>
 
       <div>
         <label htmlFor="email">{t("Email")}</label>
         <input
           type="text"
           id="username"
+          style={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -40,6 +75,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         <input
           type="password"
           id="password"
+          style={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
