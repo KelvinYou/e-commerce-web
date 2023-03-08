@@ -46,7 +46,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     },
     button: {
       backgroundColor: theme.primaryColor,
-      color: theme.backgroundColor,
+      color: theme.onBackgroundColor,
       padding: appTheme.spacing.md,
       borderRadius: appTheme.spacing.sm,
       border: 'none',
@@ -61,7 +61,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         </div>
 
       <div>
-        <label htmlFor="email">{t("Email")}</label>
+        <label style={styles.label} htmlFor="email">{t("Email")}</label>
         <input
           type="text"
           id="username"
@@ -71,7 +71,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <label htmlFor="password">{t("Password")}</label>
+        <label style={styles.label} htmlFor="password">{t("Password")}</label>
         <input
           type="password"
           id="password"
@@ -81,7 +81,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         />
       </div>
       {error && <p>{error}</p>}
-      <button type="submit">{t("Login now")}</button>
+      <button style={styles.button} type="submit">{t("Login now")}</button>
     </form>
   );
 };
