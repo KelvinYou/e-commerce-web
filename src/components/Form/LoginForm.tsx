@@ -35,7 +35,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     },
     title: {
       fontSize: appTheme.typography.fontSize.heading,
-      fontWeight: 'bold',
+      color: '#282828',
+      fontFamily: 'Poppins',
+      fontWeight: 'regular',
+    },
+    subtitle: {
+      fontSize: '14px',
+      color: '#31394D',
+      fontFamily: 'Poppins',
+      fontWeight: 'regular',
     },
     label: {
       fontSize: appTheme.typography.fontSize.subheading,
@@ -59,9 +67,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   return (
     <form style={styles.form} onSubmit={handleSubmit}>
       <div style={styles.title}>
-        {t("Login to your account")}
-        </div>
+        {t("Login")}
+      </div>
 
+      <div style={styles.subtitle}>
+        {t("Let's build something greate")}
+      </div>
+      
       <div>
         <label style={styles.label} htmlFor="email">{t("Email")}</label>
         <input
