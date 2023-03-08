@@ -9,7 +9,7 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
-  const { theme } = useContext(ThemeContext); // move inside component
+  const { theme } = useContext(ThemeContext);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,9 +34,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       padding: appTheme.spacing.lg,
     },
     title: {
-      
+      fontSize: appTheme.typography.fontSize.heading,
+      fontWeight: 'bold',
     },
     label: {
+      fontSize: appTheme.typography.fontSize.subheading,
       color: theme.onBackgroundColor,
       marginBottom: appTheme.spacing.md,
     },
@@ -56,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
   return (
     <form style={styles.form} onSubmit={handleSubmit}>
-      <div style={styles.label}>
+      <div style={styles.title}>
         {t("Login to your account")}
         </div>
 
@@ -82,6 +84,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       </div>
       {error && <p>{error}</p>}
       <button style={styles.button} type="submit">{t("Login now")}</button>
+
+      <div>{t("Don't Have An Account ?")} <span>{t("Register")}</span></div>
     </form>
   );
 };

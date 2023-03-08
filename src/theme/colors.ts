@@ -8,6 +8,7 @@ export interface Theme {
   onSecondaryColor: string;
   backgroundColor: string;
   onBackgroundColor: string;
+  shadowColor: string;
 }
 
 export const lightTheme: Theme = {
@@ -18,6 +19,7 @@ export const lightTheme: Theme = {
   onSecondaryColor: '#000',
   backgroundColor: '#fff',
   onBackgroundColor: '#000',
+  shadowColor: 'grey',
 };
 
 export const darkTheme: Theme = {
@@ -28,4 +30,5 @@ export const darkTheme: Theme = {
   onSecondaryColor: '#000',
   backgroundColor: '#121212',
   onBackgroundColor: '#fff',
+  shadowColor: 'grey',
 };
