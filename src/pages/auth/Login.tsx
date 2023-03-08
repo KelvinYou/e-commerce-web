@@ -12,7 +12,7 @@ const Login = () => {
 
   const styles = {
     content: {
-      backgroundColor: "grey", 
+      backgroundColor: "", 
       height: "100vh",
       display: 'flex',
       flexDirection: 'column' as const,
@@ -21,8 +21,8 @@ const Login = () => {
     formContainer: {
       width: "90vw",
       maxWidth: "500px",
-      borderRadius: "20px",
-      boxShadow: `0px 0px 10px ${theme.shadowColor}`,
+      borderRadius: "10px",
+      boxShadow: `0px 0px 3px ${theme.shadowColor}`,
       padding: appTheme.spacing.md,
     }
   }
