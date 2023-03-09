@@ -2,6 +2,11 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { appTheme } from '../../theme';
 import { ThemeContext } from './../../theme/ThemeContext';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './LoginForm.scss';
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -15,12 +20,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  // Define state for the password input's visibility
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Toggle the visibility of the password input
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError('Please enter a username and password');
-      return;
-    }
+
+    console.info("email: " + email);
+    console.info("password: " + password);
+
+    // if (!email || !password) {
+    //   setError('Please enter a username and password');
+    //   return;
+    // }
     
     onSubmit(email, password);
   };
@@ -36,13 +53,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     title: {
       fontSize: appTheme.typography.fontSize.heading,
       color: '#282828',
-      fontFamily: 'Poppins',
       fontWeight: 'regular',
     },
     subtitle: {
       fontSize: '14px',
       color: '#31394D',
-      fontFamily: 'Poppins',
       fontWeight: 'regular',
     },
     label: {
@@ -51,7 +66,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       marginBottom: appTheme.spacing.md,
     },
     input: {
-      padding: appTheme.spacing.sm,
       marginBottom: appTheme.spacing.md,
     },
     button: {
@@ -75,23 +89,36 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       </div>
       
       <div>
-        <label style={styles.label} htmlFor="email">{t("Email")}</label>
-        <input
+        <div style={styles.label}>{t("Email")}</div>
+        <OutlinedInput
           type="text"
           id="username"
+          placeholder="Enter your email"
           style={styles.input}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div>
-        <label style={styles.label} htmlFor="password">{t("Password")}</label>
-        <input
-          type="password"
+        <div style={styles.label}>{t("Password")}</div>
+        <OutlinedInput
+          type={showPassword ? 'text' : 'password'}
           id="password"
+          placeholder="Enter your password"
           style={styles.input}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleTogglePasswordVisibility}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
         />
       </div>
       {error && <p>{error}</p>}
