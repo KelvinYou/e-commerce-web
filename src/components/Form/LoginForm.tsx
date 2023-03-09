@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { appTheme } from '../../theme';
 import { ThemeContext } from './../../theme/ThemeContext';
-
+import './LoginForm.scss';
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
 }

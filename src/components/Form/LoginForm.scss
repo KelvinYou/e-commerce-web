@@ -1,0 +1,17 @@
+@import '../../scss/mediaQueries';
+
+.container {
+  width: 100%;
+
+  @include small {
+    padding: 0 10px;
+  }
+
+  @include medium {
+    padding: 0 20px;
+  }
+
+  @include large {
+    padding: 0 30px;
+  }
+}
