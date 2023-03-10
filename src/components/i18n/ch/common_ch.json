@@ -1,5 +1,10 @@
 {
+  "Login": "登入",
+  "Let's build something greate": "一起创建有趣的事",
+  "Enter your password": "输入你的密码",
   "Login to your account": "登入您的账户",
+  "Email cannot be blank": "电子邮件不可空",
+  "Password cannot be blank": "密码不可空",
   "Email": "电子邮件",
   "Password": "密码",
   "Login now": "立即登入",

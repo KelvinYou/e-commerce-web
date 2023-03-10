@@ -1,5 +1,9 @@
 {
-  "Login to your account": "Login to your account",
+  "Login": "Login",
+  "Let's build something greate": "Let's build something greate",
+  "Enter your password": "Enter your password",
+  "Email cannot be blank": "Email cannot be blank",
+  "Password cannot be blank": "Password cannot be blank",
   "Email": "Email",
   "Password": "Password",
   "Login now": "Login now",

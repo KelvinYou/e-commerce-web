@@ -2,8 +2,10 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { appTheme } from '../../theme';
 import { ThemeContext } from './../../theme/ThemeContext';
+import { useNavigate } from "react-router-dom";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
+import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -15,10 +17,12 @@ interface LoginFormProps {
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
-
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   // Define state for the password input's visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -30,10 +34,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setEmailError('');
+    setPasswordError('');
 
     console.info("email: " + email);
     console.info("password: " + password);
 
+    if (!email) {
+      setEmailError("Email cannot be blank");
+    }
+
+    if (!password) {
+      setPasswordError('Password cannot be blank');
+    }
     // if (!email || !password) {
     //   setError('Please enter a username and password');
     //   return;
@@ -49,6 +62,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       alignItems: 'center',
       backgroundColor: theme.backgroundColor,
       padding: appTheme.spacing.lg,
+      borderRadius: "10px",
+      boxShadow: `0px 0px 3px ${theme.shadowColor}`,
     },
     title: {
       fontSize: appTheme.typography.fontSize.heading,
@@ -63,10 +78,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     label: {
       fontSize: appTheme.typography.fontSize.subheading,
       color: theme.onBackgroundColor,
-      marginBottom: appTheme.spacing.md,
-    },
-    input: {
-      marginBottom: appTheme.spacing.md,
     },
     button: {
       backgroundColor: theme.primaryColor,
@@ -88,24 +99,30 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         {t("Let's build something greate")}
       </div>
       
-      <div>
+      <div className="input-container">
         <div style={styles.label}>{t("Email")}</div>
         <OutlinedInput
           type="text"
           id="username"
-          placeholder="Enter your email"
-          style={styles.input}
+          fullWidth
+          placeholder={t("Enter your email") ?? ""}
+          className='input-field'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <div style={{ color: "red" }}>
+          {emailError && <p>{t(emailError)}</p>}
+        </div>
+        
       </div>
-      <div>
+      <div className="input-container">
         <div style={styles.label}>{t("Password")}</div>
         <OutlinedInput
           type={showPassword ? 'text' : 'password'}
           id="password"
-          placeholder="Enter your password"
-          style={styles.input}
+          fullWidth
+          className='input-field'
+          placeholder={t("Enter your password") ?? ""}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           endAdornment={
@@ -120,11 +137,25 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
             </InputAdornment>
           }
         />
+        <div style={{ color: "red" }}>
+          {passwordError && <p>{t(passwordError)}</p>}
+        </div>
+        
       </div>
-      {error && <p>{error}</p>}
-      <button style={styles.button} type="submit">{t("Login now")}</button>
 
-      <div>{t("Don't Have An Account ?")} <span>{t("Register")}</span></div>
+      <Button 
+        variant='contained'
+        className="submit-button"
+        type="submit"
+      >{t("Login now")}</Button>
+
+      <div className="form-foot">{t("Don't Have An Account ?")} 
+        <span 
+          className='span-text' 
+          onClick={ () => navigate("/") }
+          style={{ color: theme.primaryColor }}
+        >{t("Register")}</span>
+      </div>
     </form>
   );
 };

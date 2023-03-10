@@ -21,9 +21,6 @@ const Login = () => {
     formContainer: {
       width: "90vw",
       maxWidth: "500px",
-      borderRadius: "10px",
-      boxShadow: `0px 0px 3px ${theme.shadowColor}`,
-      padding: appTheme.spacing.md,
     }
   }
 
