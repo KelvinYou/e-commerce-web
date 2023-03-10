@@ -18,7 +18,7 @@ export const lightTheme: Theme = {
   secondaryColor: '#f1c40f',
   onSecondaryColor: '#000',
   backgroundColor: '#fff',
-  onBackgroundColor: '#000',
+  onBackgroundColor: '#282828',
   shadowColor: 'grey',
 };
 
@@ -28,7 +28,7 @@ export const darkTheme: Theme = {
   onPrimaryColor: '#fff',
   secondaryColor: '#f1c40f',
   onSecondaryColor: '#000',
-  backgroundColor: '#121212',
+  backgroundColor: '#282828',
   onBackgroundColor: '#fff',
   shadowColor: 'grey',
 };
