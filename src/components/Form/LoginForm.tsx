@@ -11,6 +11,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import './LoginForm.scss';
 import { REGISTER_PATH } from '../../constants/routes';
+import Google from '@mui/icons-material/Google';
 
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => void;
@@ -97,9 +98,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       color: theme.onBackgroundColor,
       borderColor: theme.onBackgroundColor,
     },
-    button: {
+    submitButton: {
       backgroundColor: theme.primaryColor,
       color: theme.onPrimaryColor,
+      borderColor: theme.primaryColor,
+      marginTop: '10px',
+      marginBottom: '10px',
+    },
+    googleButton: {
+      backgroundColor: theme.onPrimaryColor,
+      color: theme.primaryColor,
+      borderColor: theme.primaryColor,
+      marginTop: '10px',
+      marginBottom: '10px',
     },
     footText: {
       color: theme.onBackgroundColor,
@@ -148,6 +159,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
           endAdornment={
             <InputAdornment position="end">
               <IconButton
+                style={{ color: theme.onBackgroundColor }}
                 aria-label="toggle password visibility"
                 onClick={handleTogglePasswordVisibility}
                 edge="end"
@@ -167,8 +179,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         variant='contained'
         className="submit-button"
         type="submit"
-        style={styles.button}
+        style={styles.submitButton}
       >{t("Login now")}</Button>
+
+      <Button 
+        variant='outlined'
+        className="submit-button"
+        type="submit"
+        style={styles.googleButton}
+      >
+        <Google /> {t("Sign up with Google")}
+      </Button>
 
       <div className="form-foot" style={styles.footText}>{t("Don't Have An Account ?")} 
         <span 
