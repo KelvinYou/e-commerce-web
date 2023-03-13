@@ -96,7 +96,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
     },
     input: {
       color: theme.onBackgroundColor,
-      borderColor: theme.onBackgroundColor,
     },
     button: {
       backgroundColor: theme.primaryColor,
@@ -149,6 +148,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
           endAdornment={
             <InputAdornment position="end">
               <IconButton
+                style={{ color: theme.onBackgroundColor }}
                 aria-label="toggle password visibility"
                 onClick={handleTogglePasswordVisibility}
                 edge="end"

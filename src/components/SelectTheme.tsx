@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './../theme/ThemeContext';
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const SelectTheme = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -18,7 +19,11 @@ const SelectTheme = () => {
           transition: "background-color 0.5s ease",
         }}
       >
-        {theme.mode === "light" ? "Switch to Dark" : "Switch to Light"}
+        {theme.mode === "light" ? (
+          <FaMoon size={24} onClick={toggleTheme} />
+        ) : (
+          <FaSun size={24} onClick={toggleTheme} />
+        )}
       </button>
   )
 }
