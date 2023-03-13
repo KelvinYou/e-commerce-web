@@ -49,19 +49,18 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       errors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       errors.email = 'Email is invalid';
+    } else {
     }
     
     if (!password.trim()) {
       errors.password = 'Password is required';
-      return;
     } else if (password.trim().length < 8) {
       errors.password = 'Password must be at least 8 characters long';
-      return;
     } else {
-      errors.password = '';
     }
 
     setErrors(errors);
+    console.info(errors);
     if (Object.keys(errors).length === 0) {
       onSubmit(email, password);
     }
@@ -139,6 +138,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
           className='input-field'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          error={emailError !== undefined}
         />
         <div style={{ color: "red" }}>
           {emailError && <p>{t(emailError)}</p>}
@@ -168,6 +168,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
               </IconButton>
             </InputAdornment>
           }
+          error={passwordError !== undefined}
         />
         <div style={{ color: "red" }}>
           {passwordError && <p>{t(passwordError)}</p>}
@@ -185,7 +186,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       <Button 
         variant='outlined'
         className="submit-button"
-        type="submit"
         style={styles.googleButton}
       >
         <Google /> {t("Sign up with Google")}
