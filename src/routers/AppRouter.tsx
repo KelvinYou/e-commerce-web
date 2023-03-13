@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import PrimaryNavBar from '../components/PrimaryNavBar';
 
 import routes from "./routes";
 
@@ -32,6 +33,7 @@ const AppRoutes = () => {
 const AppRouter = () => {
   return (
     <BrowserRouter>
+      <PrimaryNavBar/>
       <AppRoutes />
     </BrowserRouter>
   );

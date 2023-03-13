@@ -1,5 +1,3 @@
-import React, { createContext, useState, useEffect } from 'react';
-
 export interface Theme {
   mode: string;
   primaryColor: string;
@@ -13,7 +11,7 @@ export interface Theme {
 
 export const lightTheme: Theme = {
   mode: "light",
-  primaryColor: 'purple',
+  primaryColor: '#3C50E0', // nice
   onPrimaryColor: '#fff',
   secondaryColor: '#f1c40f',
   onSecondaryColor: '#000',
@@ -24,11 +22,11 @@ export const lightTheme: Theme = {
 
 export const darkTheme: Theme = {
   mode: "dark",
-  primaryColor: '#4d2177',
+  primaryColor: '#3C50E0', // nice
   onPrimaryColor: '#fff',
   secondaryColor: '#f1c40f',
   onSecondaryColor: '#000',
-  backgroundColor: '#282828',
-  onBackgroundColor: '#fff',
+  backgroundColor: '#1C2434', // nice
+  onBackgroundColor: '#fff', // nice  darker #D9D9D9
   shadowColor: 'grey',
 };
