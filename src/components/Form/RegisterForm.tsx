@@ -9,10 +9,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import './LoginForm.scss';
-import { REGISTER_PATH } from '../../constants/routes';
+import './RegisterForm.scss';
+import { LOGIN_PATH } from '../../constants/routes';
 
-interface LoginFormProps {
+interface RegisterFormProps {
   onSubmit: (email: string, password: string) => void;
 }
 
@@ -21,7 +21,7 @@ interface FormErrors {
   password?: string;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit }) => {
   const { t } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
@@ -44,6 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     console.info("password: " + password);
 
     const errors: FormErrors = {};
+
     if (!email.trim()) {
       errors.email = 'Email is required';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -110,7 +111,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
     <form style={styles.form} onSubmit={handleSubmit}>
       <div style={styles.title}>
 
-        {t("Login")}
+        {t("Register")}
       </div>
 
       <div style={styles.subtitle}>
@@ -168,16 +169,16 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
         className="submit-button"
         type="submit"
         style={styles.button}
-      >{t("Login now")}</Button>
+      >{t("Register now")}</Button>
 
-      <div className="form-foot" style={styles.footText}>{t("Don't Have An Account ?")} 
+      <div className="form-foot" style={styles.footText}>{t("Have an account ?")} 
         <span 
           className='span-text' 
-          onClick={ () => navigate(REGISTER_PATH) }
-        >{t("Register")}</span>
+          onClick={ () => navigate(LOGIN_PATH) }
+        >{t("Login")}</span>
       </div>
     </form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
